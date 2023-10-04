@@ -912,3 +912,4 @@ layer_0/tile_data = PackedInt32Array(131081, 1, 2, 65545, 1, 0, 131082, 65537, 2
 
 [node name="Player" parent="WorldContent" instance=ExtResource("2_e8mxb")]
 position = Vector2(173, 109)
+max_speed = 100.0
