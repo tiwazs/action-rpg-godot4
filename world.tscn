@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://decrfkeof2u6"]
+[gd_scene load_steps=15 format=3 uid="uid://decrfkeof2u6"]
 
 [ext_resource type="Texture2D" uid="uid://ockrxjifre3f" path="res://World/GrassBackground.png" id="1_fu8vt"]
 [ext_resource type="Texture2D" uid="uid://c4iaqqehkcq7o" path="res://World/DirtTileset.png" id="2_cqhqo"]
 [ext_resource type="PackedScene" uid="uid://dljcx14itkfpy" path="res://Player/player.tscn" id="2_e8mxb"]
 [ext_resource type="PackedScene" uid="uid://c74hfjujuuscm" path="res://World/bush.tscn" id="2_j8gp6"]
 [ext_resource type="Texture2D" uid="uid://cjssa8otys218" path="res://World/CliffTileset.png" id="4_t3x00"]
+[ext_resource type="PackedScene" uid="uid://4he1up1snxgy" path="res://World/grass.tscn" id="5_q0cc0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o721x"]
 texture = ExtResource("2_cqhqo")
@@ -873,6 +874,12 @@ terrain_set_0/terrain_0/name = "Cliff"
 terrain_set_0/terrain_0/color = Color(0, 0.376471, 0.737255, 1)
 sources/1 = SubResource("TileSetAtlasSource_8kji5")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bseia"]
+scenes/1/scene = ExtResource("5_q0cc0")
+
+[sub_resource type="TileSet" id="TileSet_wrw4u"]
+sources/0 = SubResource("TileSetScenesCollectionSource_bseia")
+
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -909,6 +916,11 @@ layer_0/tile_data = PackedInt32Array(18, 0, 65536, 65555, 0, 65536, 196611, 0, 6
 tile_set = SubResource("TileSet_xgiyb")
 format = 2
 layer_0/tile_data = PackedInt32Array(131081, 1, 2, 65545, 1, 0, 131082, 65537, 2, 65546, 65537, 0, 65547, 131073, 0, 131083, 131073, 2, 262153, 1, 0, 262154, 131073, 0, 327690, 131073, 2, 327689, 1, 2, 196612, 131073, 0, 262148, 327681, 3, 262147, 589825, 1, 262146, 65537, 0, 262145, 65537, 0, 327681, 65537, 2, 327682, 65537, 2, 327683, 131073, 2, 327680, 1, 2, 262144, 1, 0, 2, 524289, 1, 3, 131073, 2, 1, 65537, 2, -65535, 65537, 1, -65534, 327681, 2, -65533, 131073, 0, -65531, 1, 1, 5, 1, 2, 6, 131073, 2, -65530, 327681, 1, -65529, 131073, 2, -131065, 327681, 0, -131064, 65537, 3, -131063, 65537, 3, -131062, 131073, 3, -131066, 65537, 0, -131067, 1, 0, -131070, 131073, 0, -131071, 65537, 0, 0, 1, 2, -65536, 1, 1, -131072, 1, 0, 196611, 1, 0, 262149, 524289, 0, 262150, 131073, 3)
+
+[node name="GrassTileMap" type="TileMap" parent="WorldContent"]
+tile_set = SubResource("TileSet_wrw4u")
+format = 2
+layer_0/tile_data = PackedInt32Array(131088, 0, 65536, 131087, 0, 65536, 131089, 0, 65536, 196625, 0, 65536, 196624, 0, 65536, 65554, 0, 65536, 262160, 0, 65536, 196623, 0, 65536, 655372, 0, 65536, 655373, 0, 65536, 655368, 0, 65536, 393224, 0, 65536, 393225, 0, 65536, 524294, 0, 65536, 131075, 0, 65536, 131074, 0, 65536, 196610, 0, 65536, 131072, 0, 65536, 262144, 0, 65536, 16, 0, 65536, 17, 0, 65536, -65519, 0, 65536, -65520, 0, 65536, -65517, 0, 65536, -65516, 0, 65536, -131053, 0, 65536, -131052, 0, 65536, 22, 0, 65536, -65514, 0, 65536, -65513, 0, 65536, 23, 0, 65536, 720909, 0, 65536, 720904, 0, 65536, 720905, 0, 65536, 524303, 0, 65536, 524302, 0, 65536, 589838, 0, 65536)
 
 [node name="Player" parent="WorldContent" instance=ExtResource("2_e8mxb")]
 position = Vector2(173, 109)
