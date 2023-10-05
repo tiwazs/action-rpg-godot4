@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @export var acceleration : float = 400
 @export var max_speed : float = 80
-@export var friction : float = 500
+@export var roll_speed : float = 120
+@export var friction : float = 1000
 @export var starting_position : Vector2 = Vector2(0,0)
 
 enum {
@@ -12,6 +13,7 @@ enum {
 }
 
 var state = MOVE
+var roll_direction : Vector2 = Vector2.LEFT
 
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
@@ -25,7 +27,7 @@ func _physics_process(delta):
 		MOVE:
 			move_state(delta)
 		ROLL:
-			pass
+			roll_State(delta)
 		ATTACK:
 			attack_state(delta)
 	
@@ -40,6 +42,7 @@ func move_state(delta):
 	
 	# Update velocity
 	if input_direction != Vector2.ZERO:
+		roll_direction = input_direction
 		update_animation_parameters(input_direction)
 		animation_state.travel("Run")
 		velocity = velocity.move_toward(input_direction * max_speed, acceleration * delta)
@@ -51,9 +54,12 @@ func move_state(delta):
 	# Attack State Transition
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
+
+	# Roll State Transition
+	if Input.is_action_just_pressed("roll"):
+		state = ROLL
 	
 	# Move and slide
-	print(velocity)
 	move_and_slide()
 
 func attack_state(delta):
@@ -63,8 +69,17 @@ func attack_state(delta):
 func attack_animation_finished():
 	state = MOVE
 
+func roll_State(delta):
+	velocity = roll_direction * roll_speed
+	animation_state.travel("Roll")
+	move_and_slide()
+
+func roll_animation_finished():
+	state = MOVE
+
 func update_animation_parameters(move_input: Vector2):
 	if(move_input != Vector2.ZERO):
 		animation_tree.set("parameters/Idle/blend_position", move_input)
 		animation_tree.set("parameters/Run/blend_position", move_input)
 		animation_tree.set("parameters/Attack/blend_position", move_input)
+		animation_tree.set("parameters/Roll/blend_position", move_input)
