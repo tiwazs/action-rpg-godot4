@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dofybcl1l820i"]
+[gd_scene load_steps=14 format=3 uid="uid://dofybcl1l820i"]
 
 [ext_resource type="Texture2D" uid="uid://cwqw7o4kfvme5" path="res://Enemies/Bat.png" id="1_cxowf"]
 [ext_resource type="Script" path="res://Enemies/bat.gd" id="1_d47m2"]
 [ext_resource type="Texture2D" uid="uid://b723wwil24txr" path="res://Shadows/SmallShadow.png" id="2_46i17"]
 [ext_resource type="PackedScene" uid="uid://csvvthk7cmc68" path="res://Hitboxes&Hurtboxes/hurtbox.tscn" id="3_p0mx6"]
+[ext_resource type="PackedScene" uid="uid://cqtmh58u60f16" path="res://stats.tscn" id="5_5mmdw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lj0oc"]
 atlas = ExtResource("1_cxowf")
@@ -80,6 +81,10 @@ collision_mask = 2
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_w5mu8")
 
+[node name="Stats" parent="." instance=ExtResource("5_5mmdw")]
+max_health = 3
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
 
 [editable path="Hurtbox"]
