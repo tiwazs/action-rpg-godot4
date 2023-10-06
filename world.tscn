@@ -894,10 +894,16 @@ sources/0 = SubResource("TileSetScenesCollectionSource_0ntxp")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(161, 90)
+position = Vector2(263, 130.5)
+scale = Vector2(1.6375, 1.45)
 texture = ExtResource("1_fu8vt")
 region_enabled = true
-region_rect = Rect2(0, 0, 320, 180)
+region_rect = Rect2(0, 0, 620, 520)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 1
+position = Vector2(173, 109)
+position_smoothing_enabled = true
 
 [node name="floor" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -914,6 +920,9 @@ position = Vector2(85, 63)
 [node name="Player" parent="floor" instance=ExtResource("2_e8mxb")]
 position = Vector2(173, 109)
 max_speed = 100.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="floor/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="CliffTileMap" type="TileMap" parent="floor"]
 tile_set = SubResource("TileSet_xgiyb")
@@ -951,4 +960,10 @@ tile_set = SubResource("TileSet_oj38c")
 format = 2
 layer_0/tile_data = PackedInt32Array(15, 0, 65536, 131085, 0, 65536, 262147, 0, 65536, 131073, 0, 65536, 65557, 0, 65536, 65559, 0, 65536, 786431, 0, 65536, 786434, 0, 65536, 851972, 0, 65536, 851974, 0, 65536, 786439, 0, 65536, 196607, 0, 65536, 65534, 0, 65536, 786452, 0, 65536, 851990, 0, 65536, 851987, 0, 65536, 851982, 0, 65536, 851979, 0, 65536, 917516, 0, 65536)
 
-[node name="HealthUI" parent="." instance=ExtResource("8_4j4gb")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource("8_4j4gb")]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
