@@ -1,13 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://decrfkeof2u6"]
+[gd_scene load_steps=20 format=3 uid="uid://decrfkeof2u6"]
 
 [ext_resource type="Texture2D" uid="uid://ockrxjifre3f" path="res://World/GrassBackground.png" id="1_fu8vt"]
 [ext_resource type="Texture2D" uid="uid://c4iaqqehkcq7o" path="res://World/DirtTileset.png" id="2_cqhqo"]
 [ext_resource type="PackedScene" uid="uid://dljcx14itkfpy" path="res://Player/player.tscn" id="2_e8mxb"]
 [ext_resource type="PackedScene" uid="uid://c74hfjujuuscm" path="res://World/bush.tscn" id="2_j8gp6"]
+[ext_resource type="PackedScene" uid="uid://dkdr0s25a6ma1" path="res://World/tree.tscn" id="4_37dfi"]
 [ext_resource type="Texture2D" uid="uid://cjssa8otys218" path="res://World/CliffTileset.png" id="4_t3x00"]
 [ext_resource type="PackedScene" uid="uid://4he1up1snxgy" path="res://World/grass.tscn" id="5_q0cc0"]
 [ext_resource type="PackedScene" uid="uid://dofybcl1l820i" path="res://Enemies/bat.tscn" id="7_kfyj0"]
 [ext_resource type="PackedScene" uid="uid://dm6i5mdrnmqc8" path="res://UI/health_ui.tscn" id="8_4j4gb"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0ntxp"]
+scenes/1/scene = ExtResource("4_37dfi")
+
+[sub_resource type="TileSet" id="TileSet_oj38c"]
+sources/0 = SubResource("TileSetScenesCollectionSource_0ntxp")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kji5"]
 texture = ExtResource("4_t3x00")
@@ -907,6 +914,12 @@ position = Vector2(85, 63)
 [node name="Player" parent="WorldContent" instance=ExtResource("2_e8mxb")]
 position = Vector2(173, 109)
 max_speed = 100.0
+
+[node name="TreeTileMap" type="TileMap" parent="WorldContent"]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_oj38c")
+format = 2
+layer_0/tile_data = PackedInt32Array(15, 0, 65536, 131085, 0, 65536, 262147, 0, 65536, 131073, 0, 65536, 65557, 0, 65536, 65559, 0, 65536, 655361, 0, 65536, 786431, 0, 65536, 786434, 0, 65536, 851972, 0, 65536, 851974, 0, 65536, 786439, 0, 65536, 196607, 0, 65536, 65534, 0, 65536, 786452, 0, 65536, 851990, 0, 65536, 851987, 0, 65536, 851982, 0, 65536, 851979, 0, 65536, 917516, 0, 65536)
 
 [node name="CliffTileMap" type="TileMap" parent="WorldContent"]
 tile_set = SubResource("TileSet_xgiyb")
