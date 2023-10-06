@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://decrfkeof2u6"]
+[gd_scene load_steps=17 format=3 uid="uid://decrfkeof2u6"]
 
 [ext_resource type="Texture2D" uid="uid://ockrxjifre3f" path="res://World/GrassBackground.png" id="1_fu8vt"]
 [ext_resource type="Texture2D" uid="uid://c4iaqqehkcq7o" path="res://World/DirtTileset.png" id="2_cqhqo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjssa8otys218" path="res://World/CliffTileset.png" id="4_t3x00"]
 [ext_resource type="PackedScene" uid="uid://4he1up1snxgy" path="res://World/grass.tscn" id="5_q0cc0"]
 [ext_resource type="PackedScene" uid="uid://dofybcl1l820i" path="res://Enemies/bat.tscn" id="7_kfyj0"]
+[ext_resource type="PackedScene" uid="uid://dm6i5mdrnmqc8" path="res://UI/health_ui.tscn" id="8_4j4gb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kji5"]
 texture = ExtResource("4_t3x00")
@@ -936,3 +937,5 @@ layer_0/tile_data = PackedInt32Array(18, 0, 65536, 65555, 0, 65536, 196611, 0, 6
 tile_set = SubResource("TileSet_wrw4u")
 format = 2
 layer_0/tile_data = PackedInt32Array(131088, 0, 65536, 131087, 0, 65536, 131089, 0, 65536, 196625, 0, 65536, 196624, 0, 65536, 65554, 0, 65536, 262160, 0, 65536, 196623, 0, 65536, 655372, 0, 65536, 655373, 0, 65536, 655368, 0, 65536, 393224, 0, 65536, 393225, 0, 65536, 524294, 0, 65536, 131075, 0, 65536, 131074, 0, 65536, 196610, 0, 65536, 131072, 0, 65536, 262144, 0, 65536, 16, 0, 65536, 17, 0, 65536, -65519, 0, 65536, -65520, 0, 65536, -65517, 0, 65536, -65516, 0, 65536, -131053, 0, 65536, -131052, 0, 65536, 22, 0, 65536, -65514, 0, 65536, -65513, 0, 65536, 23, 0, 65536, 720909, 0, 65536, 720904, 0, 65536, 720905, 0, 65536, 524303, 0, 65536, 524302, 0, 65536, 589838, 0, 65536)
+
+[node name="HealthUI" parent="." instance=ExtResource("8_4j4gb")]
