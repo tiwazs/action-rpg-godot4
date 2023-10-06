@@ -10,12 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dofybcl1l820i" path="res://Enemies/bat.tscn" id="7_kfyj0"]
 [ext_resource type="PackedScene" uid="uid://dm6i5mdrnmqc8" path="res://UI/health_ui.tscn" id="8_4j4gb"]
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0ntxp"]
-scenes/1/scene = ExtResource("4_37dfi")
-
-[sub_resource type="TileSet" id="TileSet_oj38c"]
-sources/0 = SubResource("TileSetScenesCollectionSource_0ntxp")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kji5"]
 texture = ExtResource("4_t3x00")
 texture_region_size = Vector2i(32, 32)
@@ -890,6 +884,12 @@ scenes/1/scene = ExtResource("5_q0cc0")
 [sub_resource type="TileSet" id="TileSet_wrw4u"]
 sources/0 = SubResource("TileSetScenesCollectionSource_bseia")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0ntxp"]
+scenes/1/scene = ExtResource("4_37dfi")
+
+[sub_resource type="TileSet" id="TileSet_oj38c"]
+sources/0 = SubResource("TileSetScenesCollectionSource_0ntxp")
+
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -899,34 +899,28 @@ texture = ExtResource("1_fu8vt")
 region_enabled = true
 region_rect = Rect2(0, 0, 320, 180)
 
-[node name="WorldContent" type="Node2D" parent="."]
+[node name="floor" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="bat" parent="WorldContent" instance=ExtResource("7_kfyj0")]
+[node name="bat" parent="floor" instance=ExtResource("7_kfyj0")]
 position = Vector2(125, 133)
 
-[node name="bat2" parent="WorldContent" instance=ExtResource("7_kfyj0")]
+[node name="bat2" parent="floor" instance=ExtResource("7_kfyj0")]
 position = Vector2(277, 88)
 
-[node name="bat3" parent="WorldContent" instance=ExtResource("7_kfyj0")]
+[node name="bat3" parent="floor" instance=ExtResource("7_kfyj0")]
 position = Vector2(85, 63)
 
-[node name="Player" parent="WorldContent" instance=ExtResource("2_e8mxb")]
+[node name="Player" parent="floor" instance=ExtResource("2_e8mxb")]
 position = Vector2(173, 109)
 max_speed = 100.0
 
-[node name="TreeTileMap" type="TileMap" parent="WorldContent"]
-y_sort_enabled = true
-tile_set = SubResource("TileSet_oj38c")
-format = 2
-layer_0/tile_data = PackedInt32Array(15, 0, 65536, 131085, 0, 65536, 262147, 0, 65536, 131073, 0, 65536, 65557, 0, 65536, 65559, 0, 65536, 655361, 0, 65536, 786431, 0, 65536, 786434, 0, 65536, 851972, 0, 65536, 851974, 0, 65536, 786439, 0, 65536, 196607, 0, 65536, 65534, 0, 65536, 786452, 0, 65536, 851990, 0, 65536, 851987, 0, 65536, 851982, 0, 65536, 851979, 0, 65536, 917516, 0, 65536)
-
-[node name="CliffTileMap" type="TileMap" parent="WorldContent"]
+[node name="CliffTileMap" type="TileMap" parent="floor"]
 tile_set = SubResource("TileSet_xgiyb")
 format = 2
 layer_0/tile_data = PackedInt32Array(131081, 1, 2, 65545, 1, 0, 131082, 65537, 2, 65546, 65537, 0, 65547, 131073, 0, 131083, 131073, 2, 262153, 1, 0, 262154, 131073, 0, 327690, 131073, 2, 327689, 1, 2, 196612, 131073, 0, 262148, 327681, 3, 262147, 589825, 1, 262146, 65537, 0, 262145, 65537, 0, 327681, 65537, 2, 327682, 65537, 2, 327683, 131073, 2, 327680, 1, 2, 262144, 1, 0, 2, 524289, 1, 3, 131073, 2, 1, 65537, 2, -65535, 65537, 1, -65534, 327681, 2, -65533, 131073, 0, -65531, 1, 1, 5, 1, 2, 6, 131073, 2, -65530, 327681, 1, -65529, 131073, 2, -131065, 327681, 0, -131064, 65537, 3, -131063, 65537, 3, -131062, 131073, 3, -131066, 65537, 0, -131067, 1, 0, -131070, 131073, 0, -131071, 65537, 0, 0, 1, 2, -65536, 1, 1, -131072, 1, 0, 196611, 1, 0, 262149, 524289, 0, 262150, 131073, 3)
 
-[node name="DirtRoadTileMap" type="TileMap" parent="WorldContent"]
+[node name="DirtRoadTileMap" type="TileMap" parent="floor"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_welu7")
 format = 2
@@ -940,15 +934,21 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
-[node name="BushTileMap" type="TileMap" parent="WorldContent"]
+[node name="BushTileMap" type="TileMap" parent="floor"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_3mgoq")
 format = 2
-layer_0/tile_data = PackedInt32Array(18, 0, 65536, 65555, 0, 65536, 196611, 0, 65536, 196614, 0, 65536, 131078, 0, 65536, 327688, 0, 65536, 655369, 0, 65536, 589839, 0, 65536, 262159, 0, 65536, 196622, 0, 65536, 524293, 0, 65536, 458758, 0, 65536, 393229, 0, 65536)
+layer_0/tile_data = PackedInt32Array(18, 0, 65536, 65555, 0, 65536, 196611, 0, 65536, 196614, 0, 65536, 131078, 0, 65536, 327688, 0, 65536, 655369, 0, 65536, 589839, 0, 65536, 262159, 0, 65536, 196622, 0, 65536, 393229, 0, 65536)
 
-[node name="GrassTileMap" type="TileMap" parent="WorldContent"]
+[node name="GrassTileMap" type="TileMap" parent="floor"]
 tile_set = SubResource("TileSet_wrw4u")
 format = 2
-layer_0/tile_data = PackedInt32Array(131088, 0, 65536, 131087, 0, 65536, 131089, 0, 65536, 196625, 0, 65536, 196624, 0, 65536, 65554, 0, 65536, 262160, 0, 65536, 196623, 0, 65536, 655372, 0, 65536, 655373, 0, 65536, 655368, 0, 65536, 393224, 0, 65536, 393225, 0, 65536, 524294, 0, 65536, 131075, 0, 65536, 131074, 0, 65536, 196610, 0, 65536, 131072, 0, 65536, 262144, 0, 65536, 16, 0, 65536, 17, 0, 65536, -65519, 0, 65536, -65520, 0, 65536, -65517, 0, 65536, -65516, 0, 65536, -131053, 0, 65536, -131052, 0, 65536, 22, 0, 65536, -65514, 0, 65536, -65513, 0, 65536, 23, 0, 65536, 720909, 0, 65536, 720904, 0, 65536, 720905, 0, 65536, 524303, 0, 65536, 524302, 0, 65536, 589838, 0, 65536)
+layer_0/tile_data = PackedInt32Array(131088, 0, 65536, 131087, 0, 65536, 131089, 0, 65536, 196625, 0, 65536, 196624, 0, 65536, 262160, 0, 65536, 196623, 0, 65536, 655372, 0, 65536, 655373, 0, 65536, 655368, 0, 65536, 131072, 0, 65536, 262144, 0, 65536, 16, 0, 65536, -65519, 0, 65536, -65520, 0, 65536, -65517, 0, 65536, -65516, 0, 65536, -131053, 0, 65536, -131052, 0, 65536, 22, 0, 65536, -65514, 0, 65536, -65513, 0, 65536, 23, 0, 65536, 720909, 0, 65536, 720904, 0, 65536, 720905, 0, 65536, 524303, 0, 65536, 524302, 0, 65536, 589838, 0, 65536, 196610, 0, 65536, 262146, 0, 65536, 131075, 0, 65536, 131074, 0, 65536, 14, 0, 65536, 65554, 0, 65536, -65518, 0, 65536)
+
+[node name="TreeTileMap" type="TileMap" parent="floor"]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_oj38c")
+format = 2
+layer_0/tile_data = PackedInt32Array(15, 0, 65536, 131085, 0, 65536, 262147, 0, 65536, 131073, 0, 65536, 65557, 0, 65536, 65559, 0, 65536, 786431, 0, 65536, 786434, 0, 65536, 851972, 0, 65536, 851974, 0, 65536, 786439, 0, 65536, 196607, 0, 65536, 65534, 0, 65536, 786452, 0, 65536, 851990, 0, 65536, 851987, 0, 65536, 851982, 0, 65536, 851979, 0, 65536, 917516, 0, 65536)
 
 [node name="HealthUI" parent="." instance=ExtResource("8_4j4gb")]
