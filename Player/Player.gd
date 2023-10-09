@@ -94,3 +94,7 @@ func _on_hurtbox_area_entered(area):
 	stats.health -= 1
 	hurtbox.start_invincibility(0.5)
 	hurtbox.create_hit_effect()
+
+func _on_elevation_handler_area_entered(area):
+	z_index = area.new_z_index
+	print("z index set to "+str(z_index))

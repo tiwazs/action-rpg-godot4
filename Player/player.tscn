@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dljcx14itkfpy"]
+[gd_scene load_steps=54 format=3 uid="uid://dljcx14itkfpy"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_20d4x"]
 [ext_resource type="Texture2D" uid="uid://b82vmxgmty68n" path="res://Player/Player.png" id="2_7qd10"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8mqu82dyi6uv" path="res://Hitboxes&Hurtboxes/hitbox.tscn" id="3_ppmu1"]
 [ext_resource type="Script" path="res://Player/sword_hitbox.gd" id="4_xiscj"]
 [ext_resource type="PackedScene" uid="uid://csvvthk7cmc68" path="res://Hitboxes&Hurtboxes/hurtbox.tscn" id="5_0tnq6"]
+[ext_resource type="PackedScene" uid="uid://c5ygpvbs7cib6" path="res://Hitboxes&Hurtboxes/elevation_handler.tscn" id="7_gohmv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c7qnf"]
 radius = 3.69314
@@ -659,6 +660,9 @@ radius = 9.0
 radius = 5.0
 height = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxboq"]
+radius = 6.08276
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_20d4x")
@@ -675,6 +679,7 @@ hframes = 60
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_c7qnf")
 
@@ -692,6 +697,7 @@ parameters/Roll/blend_position = Vector2(0.0338005, 0.678443)
 parameters/Run/blend_position = Vector2(-0.00176364, 0.0624454)
 
 [node name="HitboxPivot" type="Marker2D" parent="."]
+visible = false
 position = Vector2(0, -4)
 rotation = 1.5708
 
@@ -706,6 +712,7 @@ shape = SubResource("CapsuleShape2D_s7wti")
 disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_0tnq6")]
+visible = false
 collision_layer = 4
 collision_mask = 512
 
@@ -714,7 +721,15 @@ position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_unqyy")
 debug_color = Color(0.807843, 0.407843, 0.160784, 0.419608)
 
+[node name="elevation_handler" parent="." instance=ExtResource("7_gohmv")]
+
+[node name="CollisionShape2D" parent="elevation_handler" index="0"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_cxboq")
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="elevation_handler" to="." method="_on_elevation_handler_area_entered"]
 
 [editable path="HitboxPivot/SwordHitbox"]
 [editable path="Hurtbox"]
+[editable path="elevation_handler"]

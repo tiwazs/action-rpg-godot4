@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://decrfkeof2u6"]
+[gd_scene load_steps=23 format=3 uid="uid://decrfkeof2u6"]
 
 [ext_resource type="Texture2D" uid="uid://ockrxjifre3f" path="res://World/GrassBackground.png" id="1_fu8vt"]
 [ext_resource type="Texture2D" uid="uid://c4iaqqehkcq7o" path="res://World/DirtTileset.png" id="2_cqhqo"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4he1up1snxgy" path="res://World/grass.tscn" id="5_q0cc0"]
 [ext_resource type="PackedScene" uid="uid://dofybcl1l820i" path="res://Enemies/bat.tscn" id="7_kfyj0"]
 [ext_resource type="PackedScene" uid="uid://dm6i5mdrnmqc8" path="res://UI/health_ui.tscn" id="8_4j4gb"]
+[ext_resource type="PackedScene" uid="uid://c2ystco12d0nd" path="res://elevation.tscn" id="10_6c0lc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kji5"]
 texture = ExtResource("4_t3x00")
@@ -890,6 +891,12 @@ scenes/1/scene = ExtResource("4_37dfi")
 [sub_resource type="TileSet" id="TileSet_oj38c"]
 sources/0 = SubResource("TileSetScenesCollectionSource_0ntxp")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kknip"]
+size = Vector2(55, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1je6c"]
+size = Vector2(54, 20)
+
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -902,7 +909,7 @@ region_rect = Rect2(0, 0, 1920, 1920)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 1
-position = Vector2(-124, 26)
+position = Vector2(-72, 266)
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -918,16 +925,16 @@ y_sort_enabled = true
 position = Vector2(-315, -301)
 
 [node name="bat" parent="floor" instance=ExtResource("7_kfyj0")]
-position = Vector2(182, 541)
+position = Vector2(429, 406)
 
 [node name="bat2" parent="floor" instance=ExtResource("7_kfyj0")]
-position = Vector2(334, 496)
+position = Vector2(581, 361)
 
 [node name="bat3" parent="floor" instance=ExtResource("7_kfyj0")]
-position = Vector2(142, 471)
+position = Vector2(389, 336)
 
 [node name="Player" parent="floor" instance=ExtResource("2_e8mxb")]
-position = Vector2(191, 327)
+position = Vector2(243, 567)
 max_speed = 100.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="floor/Player"]
@@ -974,10 +981,26 @@ tile_set = SubResource("TileSet_oj38c")
 format = 2
 layer_0/tile_data = PackedInt32Array(15, 0, 65536, 131085, 0, 65536, 262147, 0, 65536, 131073, 0, 65536, 65557, 0, 65536, 65559, 0, 65536, 196607, 0, 65536, 65534, 0, 65536, 327690, 0, 65536, 327693, 0, 65536, 262155, 0, 65536, 196634, 0, 65536, 131100, 0, 65536, 262169, 0, 65536, 393239, 0, 65536, 655377, 0, 65536, 655380, 0, 65536, 458773, 0, 65536, 393233, 0, 65536, 458768, 0, 65536, 196645, 0, 65536, 131110, 0, 65536, 262187, 0, 65536, 327726, 0, 65536, 327722, 0, 65536, 393261, 0, 65536, 458798, 0, 65536, 262174, 0, 65536, 262177, 0, 65536, 327715, 0, 65536, 262139, 0, 65536, 262138, 0, 65536, 327676, 0, 65536, 327678, 0, 65536, 262144, 0, 65536, 393216, 0, 65536, 393215, 0, 65536, 393214, 0, 65536, 393219, 0, 65536, 393221, 0, 65536, 327687, 0, 65536, 196616, 0, 65536, 327688, 0, 65536, 327682, 0, 65536, 2424885, 0, 65536, 2228281, 0, 65536, 1114163, 0, 65536, 1376309, 0, 65536, 1310772, 0, 65536, 1179703, 0, 65536, 1048632, 0, 65536, 1179695, 0, 65536, 1245229, 0, 65536, 1966126, 0, 65536, 2162736, 0, 65536, 2228271, 0, 65536, 2424876, 0, 65536, 2293805, 0, 65536, 2228269, 0, 65536, 2490416, 0, 65536, 2490419, 0, 65536, 2555958, 0, 65536, 2555954, 0, 65536, 2490411, 0, 65536, 2424875, 0, 65536, 2359339, 0, 65536, 2359338, 0, 65536, 2293802, 0, 65536, 2097196, 0, 65536, 2031660, 0, 65536, 2031661, 0, 65536, 2031662, 0, 65536, 2162724, 0, 65536, 2162723, 0, 65536, 2097185, 0, 65536, 2097183, 0, 65536, 2031646, 0, 65536, 2031645, 0, 65536, 1966108, 0, 65536, 2031644, 0, 65536, 2097180, 0, 65536, 2097179, 0, 65536, 2162716, 0, 65536, 1900582, 0, 65536, 2097190, 0, 65536, 2097193, 0, 65536, 2621486, 0, 65536, 2687020, 0, 65536, 2687022, 0, 65536, 1376306, 0, 65536, 1310763, 0, 65536, 983069, 0, 65536, 1114143, 0, 65536, 1310746, 0, 65536, 720925, 0, 65536, 458778, 0, 65536, 589848, 0, 65536, 720917, 0, 65536, 589855, 0, 65536, 327708, 0, 65536, 262195, 0, 65536, 196658, 0, 65536, 327735, 0, 65536, 196662, 0, 65536, 262196, 0, 65536, 327738, 0, 65536, 393275, 0, 65536, 589887, 0, 65536, 524350, 0, 65536, 524348, 0, 65536, 458806, 0, 65536, 458808, 0, 65536, 524345, 0, 65536, 393267, 0, 65536, 327729, 0, 65536, 262192, 0, 65536, 720961, 0, 65536, 589889, 0, 65536, 589890, 0, 65536, 655428, 0, 65536, 917568, 0, 65536, 852033, 0, 65536, 917566, 0, 65536, 786492, 0, 65536, 917557, 0, 65536, 720947, 0, 65536, 589874, 0, 65536, 852017, 0, 65536, 1310783, 0, 65536, 655418, 0, 65536, 1769518, 0, 65536, 1769512, 0, 65536, 1638438, 0, 65536, 1441843, 0, 65536, 1048639, 0, 65536, 983105, 0, 65536)
 
+[node name="elevation_z_0" parent="floor" instance=ExtResource("10_6c0lc")]
+position = Vector2(430, 653)
+new_z_index = 2
+
+[node name="CollisionShape2D" parent="floor/elevation_z_0" index="0"]
+position = Vector2(17.5, 1)
+shape = SubResource("RectangleShape2D_kknip")
+
 [node name="floor1" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(-310, -290)
+
+[node name="elevation_z_2" parent="floor1" instance=ExtResource("10_6c0lc")]
+position = Vector2(233, 518)
+new_z_index = 2
+
+[node name="CollisionShape2D" parent="floor1/elevation_z_2" index="0"]
+position = Vector2(210, 102)
+shape = SubResource("RectangleShape2D_1je6c")
 
 [node name="CliffTileMap" type="TileMap" parent="floor1"]
 position = Vector2(159, 156)
@@ -1107,3 +1130,6 @@ position = Vector2(159, 156)
 tile_set = SubResource("TileSet_wrw4u")
 format = 2
 layer_0/tile_data = PackedInt32Array(1179652, 0, 65536, 1245188, 0, 65536, 1114116, 0, 65536)
+
+[editable path="floor/elevation_z_0"]
+[editable path="floor1/elevation_z_2"]

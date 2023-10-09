@@ -94,6 +94,7 @@ roll={
 2d_physics/layer_6="player_hitbox"
 2d_physics/layer_7="enemy_hitbox"
 2d_physics/layer_8="soft_collisions"
+2d_physics/layer_21="elevation_handling"
 
 [rendering]
 
